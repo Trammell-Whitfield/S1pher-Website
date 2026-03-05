@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>S1Pher — Trammell Whitfield</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+
+<style>
+  :root {
+    --teal: #00E5C8;
+    --teal-dim: #00b8a0;
+    --blue: #3B82F6;
+    --bg: #070B0F;
+    --bg2: #0D1117;
+    --bg3: #111820;
+    --card: #0F1923;
+    --border: rgba(0,229,200,0.12);
+    --text: #C8D8E8;
+    --muted: #627D95;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+  code, .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* Grid overlay */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(0,229,200,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,200,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  /* Fade-in */
+  .fade-in { opacity:0; transform:translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  /* Glow accents */
+  .teal { color: var(--teal); }
+  .glow { text-shadow: 0 0 28px rgba(0,229,200,0.45); }
+  .pill {
+    display:inline-block;
+    border: 1px solid var(--border);
+    border-radius:999px;
+    padding:2px 12px;
+    font-size:0.73rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color: var(--teal);
+    background: rgba(0,229,200,0.06);
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* Nav */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    background: rgba(7,11,15,0.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; color:var(--teal); letter-spacing:-0.02em; }
+  .nav-links a { color: var(--muted); font-size:0.82rem; text-decoration:none; margin-left:24px; letter-spacing:0.05em; transition:color .2s; }
+  .nav-links a:hover { color:var(--teal); }
+
+  /* Hero */
+  #hero {
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding: 120px 0 80px;
+    position:relative; overflow:hidden;
+  }
+  #hero::after {
+    content:'';
+    position:absolute; top:-200px; right:-200px;
+    width:700px; height:700px;
+    background: radial-gradient(circle, rgba(0,229,200,0.07) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-overline { font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--teal); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:18px; }
+  .hero-title { font-size:clamp(3rem,8vw,7rem); font-weight:800; line-height:1.0; letter-spacing:-0.03em; color:#ffffff; }
+  .hero-tagline { font-size:clamp(1rem,2vw,1.25rem); color:var(--muted); max-width:580px; margin-top:22px; font-weight:300; }
+  .hero-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:38px; padding:12px 26px;
+    border:1px solid var(--teal); border-radius:4px;
+    color:var(--teal); text-decoration:none;
+    font-family:'IBM Plex Mono',monospace; font-size:0.82rem; letter-spacing:0.06em;
+    background: rgba(0,229,200,0.04);
+    transition: background .25s, box-shadow .25s;
+  }
+  .hero-cta:hover { background: rgba(0,229,200,0.12); box-shadow: 0 0 24px rgba(0,229,200,0.2); }
+
+  /* Section */
+  section { position:relative; z-index:1; }
+  .section-inner { max-width:1080px; margin:0 auto; padding:100px 32px; }
+  .section-label { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--teal); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:12px; }
+  .section-title { font-size:clamp(1.8rem,4vw,3rem); font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.1; margin-bottom:28px; }
+  .divider { height:1px; background: linear-gradient(90deg, var(--teal), transparent); opacity:0.2; margin:0 0 60px; }
+
+  /* Problem */
+  .problem-card {
+    background: var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:32px 36px;
+    position:relative; overflow:hidden;
+  }
+  .problem-card::before {
+    content:'';
+    position:absolute; left:0; top:0; bottom:0;
+    width:3px; background: var(--teal);
+    border-radius:3px 0 0 3px;
+  }
+
+  /* What I Built */
+  .spec-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:40px; }
+  .spec-item {
+    background: var(--card); border:1px solid var(--border); border-radius:8px;
+    padding:24px; transition:border-color .25s, transform .25s;
+  }
+  .spec-item:hover { border-color: rgba(0,229,200,0.35); transform:translateY(-3px); }
+  .spec-icon { margin-bottom:14px; }
+  .spec-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; color:#fff; margin-bottom:6px; }
+  .spec-desc { font-size:0.875rem; color:var(--muted); line-height:1.6; }
+
+  /* Architecture */
+  #arch-bg { background: var(--bg2); }
+  .arch-flow {
+    display:flex; align-items:stretch; gap:0;
+    border:1px solid var(--border); border-radius:10px; overflow:hidden;
+    margin: 40px 0;
+  }
+  .arch-node {
+    flex:1; padding:24px 20px; text-align:center;
+    position:relative; border-right:1px solid var(--border);
+    background: var(--card);
+    transition: background .25s;
+  }
+  .arch-node:last-child { border-right:none; }
+  .arch-node:hover { background: rgba(0,229,200,0.04); }
+  .arch-node-label { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--teal); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px; }
+  .arch-node-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1.05rem; color:#fff; margin-bottom:10px; }
+  .arch-arrow {
+    position:absolute; right:-12px; top:50%; transform:translateY(-50%);
+    z-index:2; color:var(--teal); font-size:1.2rem;
+  }
+
+  .cascade-table { width:100%; border-collapse:collapse; margin-top:32px; }
+  .cascade-table th {
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--teal);
+    letter-spacing:0.1em; text-transform:uppercase;
+    padding:10px 16px; text-align:left;
+    border-bottom:1px solid var(--border);
+  }
+  .cascade-table td { padding:14px 16px; font-size:0.875rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .cascade-table tr:last-child td { border-bottom:none; }
+  .cascade-table tr:hover td { background: rgba(0,229,200,0.03); }
+  .tier-badge {
+    display:inline-block; padding:2px 8px; border-radius:3px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:500;
+  }
+
+  /* Challenges */
+  .challenge-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(460px,1fr)); gap:28px; margin-top:40px; }
+  @media(max-width:640px){ .challenge-grid { grid-template-columns:1fr; } }
+  .challenge-card {
+    background: var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:32px;
+    transition: border-color .25s;
+  }
+  .challenge-card:hover { border-color: rgba(0,229,200,0.3); }
+  .challenge-num { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--teal); letter-spacing:0.15em; margin-bottom:8px; }
+  .challenge-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; color:#fff; margin-bottom:16px; }
+  .finding {
+    background: rgba(0,229,200,0.05); border:1px solid rgba(0,229,200,0.15);
+    border-radius:6px; padding:12px 16px; margin-top:16px;
+    font-size:0.82rem; color:var(--teal); font-family:'IBM Plex Mono',monospace;
+  }
+  .code-block {
+    background:#060d14; border:1px solid var(--border); border-radius:6px;
+    padding:12px 16px; margin-top:12px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:#8ecdf5;
+    overflow-x:auto; white-space:pre;
+  }
+
+  /* Status */
+  .status-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:40px; }
+  @media(max-width:640px){ .status-grid { grid-template-columns:1fr; } }
+  .status-col {
+    background: var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:28px;
+  }
+  .status-col-title { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px; }
+  .status-col.working .status-col-title { color:#22c55e; }
+  .status-col.indev .status-col-title { color:#f59e0b; }
+  .status-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; font-size:0.875rem; }
+  .status-dot { width:6px; height:6px; border-radius:50%; margin-top:7px; flex-shrink:0; }
+  .working .status-dot { background:#22c55e; box-shadow:0 0 8px #22c55e; }
+  .indev .status-dot { background:#f59e0b; box-shadow:0 0 8px #f59e0b; }
+
+  /* Takeaways */
+  .takeaway-list { display:grid; gap:20px; margin-top:40px; }
+  .takeaway-item {
+    display:flex; gap:24px; align-items:flex-start;
+    background: var(--card); border:1px solid var(--border);
+    border-radius:10px; padding:28px 32px;
+    transition: border-color .25s;
+  }
+  .takeaway-item:hover { border-color: rgba(0,229,200,0.25); }
+  .takeaway-num { font-family:'IBM Plex Mono',monospace; font-size:2rem; font-weight:500; color: var(--border); flex-shrink:0; line-height:1; color:rgba(0,229,200,0.2); }
+  .takeaway-body h4 { font-family:'Syne',sans-serif; font-weight:700; font-size:1.1rem; color:#fff; margin-bottom:6px; }
+  .takeaway-body p { font-size:0.9rem; color:var(--muted); }
+
+  /* About */
+  #about-bg { background: var(--bg2); }
+  .about-card {
+    background: var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:48px; max-width:780px; margin:0 auto;
+    position:relative; overflow:hidden;
+  }
+  .about-card::after {
+    content:'';
+    position:absolute; bottom:-80px; right:-80px;
+    width:300px; height:300px;
+    background: radial-gradient(circle, rgba(0,229,200,0.06) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .avatar {
+    width:64px; height:64px; border-radius:50%;
+    background: linear-gradient(135deg, var(--teal), #1d6ead);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:#fff;
+    margin-bottom:24px; flex-shrink:0;
+  }
+  .about-name { font-family:'Syne',sans-serif; font-weight:800; font-size:1.6rem; color:#fff; letter-spacing:-0.02em; }
+  .about-loc { font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--teal); letter-spacing:0.1em; margin-bottom:20px; }
+
+  /* Footer */
+  footer {
+    border-top:1px solid var(--border);
+    padding:60px 32px;
+    text-align:center;
+    position:relative; z-index:1;
+  }
+  .footer-quote {
+    font-family:'Syne',sans-serif; font-size:clamp(1rem,2.5vw,1.35rem);
+    color:#fff; max-width:700px; margin:0 auto 32px;
+    font-weight:700; line-height:1.4; letter-spacing:-0.01em;
+  }
+  .footer-links { display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; }
+  .footer-links a { color:var(--muted); text-decoration:none; font-size:0.82rem; letter-spacing:0.05em; transition:color .2s; }
+  .footer-links a:hover { color:var(--teal); }
+  .footer-byline { margin-top:32px; font-size:0.75rem; color:rgba(98,125,149,0.5); font-family:'IBM Plex Mono',monospace; }
+
+  /* Responsive */
+  @media(max-width:768px){
+    nav { padding:12px 20px; }
+    .nav-links { display:none; }
+    .arch-flow { flex-direction:column; }
+    .arch-node { border-right:none; border-bottom:1px solid var(--border); }
+    .arch-node:last-child { border-bottom:none; }
+    .arch-arrow { display:none; }
+    .about-card { padding:28px; }
+    .section-inner { padding:72px 20px; }
+    .mission-grid { grid-template-columns:1fr !important; }
+    .prototype-inner { padding:28px !important; }
+  }
+
+  /* Stat badges */
+  .stat-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+  .stat-badge {
+    background: rgba(0,229,200,0.05); border:1px solid rgba(0,229,200,0.15);
+    border-radius:6px; padding:8px 16px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+  }
+  .stat-badge strong { color:var(--teal); }
+
+  /* Blockquote */
+  blockquote {
+    border-left:3px solid var(--teal);
+    padding-left:20px; margin:24px 0;
+    font-style:italic; color:var(--muted);
+    font-size:0.95rem;
+  }
+
+  /* Progress bar for accuracy */
+  .prog-wrap { margin-top:10px; }
+  .prog-label { display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--muted); margin-bottom:4px; }
+  .prog-track { height:4px; background:rgba(255,255,255,0.07); border-radius:999px; overflow:hidden; }
+  .prog-fill { height:100%; background: linear-gradient(90deg, var(--teal), #3B82F6); border-radius:999px; transition: width 1.2s cubic-bezier(.4,0,.2,1); width:0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">S1Pher //</span>
+  <div class="nav-links">
+    <a href="#mission">Mission</a>
+    <a href="#prototype">Prototype 01</a>
+    <a href="#problem">Problem</a>
+    <a href="#arch">Architecture</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#about">About</a>
+    <a href="https://github.com/Trammell-Whitfield/The_Teaching_Calculator" target="_blank" rel="noopener" style="color:var(--teal); border:1px solid rgba(0,229,200,0.3); padding:5px 14px; border-radius:4px;">GitHub ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="section-inner" style="padding-top:0; padding-bottom:0;">
+    <div class="fade-in">
+      <p class="hero-overline">Founded 2024 · Seattle, WA</p>
+      <h1 class="hero-title"><span class="teal glow">S1Pher</span></h1>
+      <p class="hero-tagline">Building technology that democratizes access to information — starting with the students who need it most.</p>
+      <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="pill">EdTech</span>
+        <span class="pill">Offline-First AI</span>
+        <span class="pill">Embedded Systems</span>
+        <span class="pill">Photonic Computing</span>
+      </div>
+      <div style="margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a href="#prototype" class="hero-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          View Prototype 01
+        </a>
+        <a href="https://github.com/Trammell-Whitfield/The_Teaching_Calculator" target="_blank" rel="noopener" class="hero-cta" style="border-color:rgba(255,255,255,0.1); color:var(--muted); background:transparent;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">The Company</p>
+      <h2 class="section-title">What S1Pher is<br/>building toward.</h2>
+    </div>
+    <div class="divider"></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;" class="fade-in mission-grid">
+      <div>
+        <p style="color:var(--text); font-size:1.05rem; line-height:1.8; margin-bottom:18px;">S1Pher is a hardware-software company focused on making intelligent, accessible tools for people who've been left out of the technology revolution.</p>
+        <p style="color:var(--muted);">Long-term, S1Pher is building toward next-generation computing hardware — photonic communication systems and custom chip design that will power the next wave of edge AI. But the mission starts where the need is most immediate.</p>
+      </div>
+      <div style="display:grid; gap:14px;">
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px 24px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--teal); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:6px;">Now</div>
+          <div style="color:#fff; font-weight:500; margin-bottom:4px;">Offline-first AI tutoring</div>
+          <div style="font-size:0.82rem; color:var(--muted);">Making intelligent education accessible without internet dependency</div>
+        </div>
+        <div style="background:var(--card); border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:20px 24px; opacity:0.65;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:6px;">Next</div>
+          <div style="color:#fff; font-weight:500; margin-bottom:4px;">Custom NPU &amp; edge hardware</div>
+          <div style="font-size:0.82rem; color:var(--muted);">Specialized silicon for on-device AI inference</div>
+        </div>
+        <div style="background:var(--card); border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:20px 24px; opacity:0.4;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:6px;">Vision</div>
+          <div style="color:#fff; font-weight:500; margin-bottom:4px;">Photonic communication systems</div>
+          <div style="font-size:0.82rem; color:var(--muted);">Next-generation data transmission at the hardware level</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTYPE BANNER -->
+<section id="prototype">
+  <div class="section-inner" style="padding-bottom:40px;">
+    <div class="fade-in prototype-inner" style="background:var(--card); border:1px solid rgba(0,229,200,0.2); border-radius:12px; padding:40px 48px; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),#3B82F6,transparent);"></div>
+      <div style="position:absolute; top:-120px; right:-120px; width:350px; height:350px; background:radial-gradient(circle,rgba(0,229,200,0.06) 0%,transparent 70%); pointer-events:none;"></div>
+      <div style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:260px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--teal); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px;">S1Pher · Prototype 01</div>
+          <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.1; margin-bottom:14px;">The Teaching<br/>Calculator</h2>
+          <p style="color:var(--muted); font-size:0.95rem; max-width:500px;">An offline AI math tutor built into the calculator students already own — the first physical instantiation of S1Pher's mission.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px; min-width:200px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:2px;">Stack</div>
+          <span class="pill">Raspberry Pi 5</span>
+          <span class="pill">Qwen2.5-Math LLM</span>
+          <span class="pill">ESP32 Bridge</span>
+          <span class="pill">TI-84 Plus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">01 — The Problem</p>
+      <h2 class="section-title">Every Friday, I see this<br/>problem in person.</h2>
+    </div>
+    <div class="divider"></div>
+    <div class="problem-card fade-in">
+      <p style="font-size:1.05rem; color:var(--text); margin-bottom:20px;">Every Friday I volunteer tutoring homeless students in Seattle. When a kid hits a wall in math, their options are brutally limited:</p>
+      <div style="display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); margin-bottom:28px;">
+        <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.15); border-radius:8px; padding:18px;">
+          <div style="color:#ef4444; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Option A</div>
+          <div style="color:#fff; font-weight:500;">Stop trying.</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.15); border-radius:8px; padding:18px;">
+          <div style="color:#ef4444; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Option B</div>
+          <div style="color:#fff; font-weight:500;">Copy from AI without understanding.</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.15); border-radius:8px; padding:18px;">
+          <div style="color:#ef4444; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Option C</div>
+          <div style="color:#fff; font-weight:500;">Afford tutoring.</div>
+        </div>
+      </div>
+      <p style="color:var(--muted);">What most of these students <em>do</em> have — required by their school — is a <strong style="color:#fff;">TI-84 calculator</strong>. An underutilized black box sitting in their bag, capable of so much more than arithmetic.</p>
+      <div class="finding" style="margin-top:20px;">The hardware is already in their hands. The question is whether it can become a learning tool.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I BUILT -->
+<section id="built">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">02 — What I Built</p>
+      <h2 class="section-title">An AI tutor that runs<br/>completely offline.</h2>
+    </div>
+    <div class="divider"></div>
+    <p class="fade-in" style="max-width:640px; color:var(--muted); margin-bottom:12px;">The Teaching Calculator doesn't give answers — it asks questions. Like a real tutor: <span class="teal">"What's the first step? What formula applies here?"</span></p>
+    <div class="spec-grid fade-in">
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="4" width="24" height="24" rx="4" stroke="#00E5C8" stroke-width="1.5"/>
+            <rect x="10" y="10" width="5" height="5" rx="1" fill="#00E5C8" opacity="0.5"/>
+            <rect x="17" y="10" width="5" height="5" rx="1" fill="#00E5C8" opacity="0.3"/>
+            <rect x="10" y="17" width="5" height="5" rx="1" fill="#00E5C8" opacity="0.3"/>
+            <rect x="17" y="17" width="5" height="5" rx="1" fill="#00E5C8" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="spec-title">Raspberry Pi 5 (16GB)</div>
+        <div class="spec-desc">Runs a quantized Qwen2.5-Math-7B model at Q5_K_M precision — 4.1GB RAM, 2–5 tok/s throughput.</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="10" stroke="#00E5C8" stroke-width="1.5"/>
+            <line x1="16" y1="6" x2="16" y2="10" stroke="#00E5C8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="22" x2="16" y2="26" stroke="#00E5C8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="16" x2="10" y2="16" stroke="#00E5C8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="22" y1="16" x2="26" y2="16" stroke="#00E5C8" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="3" fill="#00E5C8" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="spec-title">Fully Offline</div>
+        <div class="spec-desc">No WiFi required. Works at a shelter, a library, or anywhere students study. Internet is optional, not required.</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="3" y="6" width="16" height="22" rx="2" stroke="#00E5C8" stroke-width="1.5"/>
+            <line x1="6" y1="11" x2="16" y2="11" stroke="#00E5C8" stroke-width="1" opacity="0.4"/>
+            <line x1="6" y1="14" x2="16" y2="14" stroke="#00E5C8" stroke-width="1" opacity="0.4"/>
+            <line x1="6" y1="17" x2="12" y2="17" stroke="#00E5C8" stroke-width="1" opacity="0.4"/>
+            <path d="M20 12 L29 12 L29 20 L20 20" stroke="#00E5C8" stroke-width="1.5" fill="none"/>
+            <circle cx="24.5" cy="16" r="2" fill="#00E5C8" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="spec-title">ESP32 Wireless Bridge</div>
+        <div class="spec-desc">Custom ESP32 firmware bridges the TI-84's I/O link port to the Pi over low-power wireless.</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M6 26 L16 8 L26 26" stroke="#00E5C8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9.5 21 L22.5 21" stroke="#00E5C8" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="8" r="2" fill="#00E5C8" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="spec-title">Socratic AI Tutor</div>
+        <div class="spec-desc">Prompted to guide, not solve. Responds to where the student is stuck, not just what the answer is.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="arch" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">03 — System Architecture</p>
+      <h2 class="section-title">Hardware stack &amp;<br/>4-tier cascade routing.</h2>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Hardware Flow -->
+    <p class="fade-in" style="color:var(--muted); font-size:0.875rem; margin-bottom:12px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.05em;">HARDWARE STACK</p>
+    <div class="arch-flow fade-in">
+      <div class="arch-node">
+        <div class="arch-arrow">→</div>
+        <div class="arch-node-label">Input</div>
+        <svg style="margin:0 auto 10px;display:block;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="4" y="3" width="20" height="30" rx="2" stroke="#00E5C8" stroke-width="1.5"/>
+          <rect x="7" y="7" width="14" height="10" rx="1" stroke="#00E5C8" stroke-width="1" opacity="0.5"/>
+          <rect x="7" y="20" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+          <rect x="13" y="20" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+          <rect x="19" y="20" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+          <rect x="7" y="26" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+          <rect x="13" y="26" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+          <rect x="19" y="26" width="4" height="4" rx="1" fill="#00E5C8" opacity="0.4"/>
+        </svg>
+        <div class="arch-node-name">TI-84 Plus</div>
+        <div style="font-size:0.75rem; color:var(--muted);">Student device</div>
+      </div>
+      <div class="arch-node">
+        <div class="arch-arrow">→</div>
+        <div class="arch-node-label">Bridge</div>
+        <svg style="margin:0 auto 10px;display:block;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="6" y="10" width="24" height="16" rx="3" stroke="#00E5C8" stroke-width="1.5"/>
+          <circle cx="12" cy="18" r="2" fill="#00E5C8" opacity="0.5"/>
+          <circle cx="18" cy="18" r="2" fill="#00E5C8" opacity="0.7"/>
+          <circle cx="24" cy="18" r="2" fill="#00E5C8" opacity="0.5"/>
+          <path d="M11 10 L11 7" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M25 10 L25 7" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="arch-node-name">ESP32</div>
+        <div style="font-size:0.75rem; color:var(--muted);">Wireless bridge</div>
+      </div>
+      <div class="arch-node">
+        <div class="arch-arrow">→</div>
+        <div class="arch-node-label">Compute</div>
+        <svg style="margin:0 auto 10px;display:block;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="5" y="5" width="26" height="26" rx="3" stroke="#00E5C8" stroke-width="1.5"/>
+          <rect x="11" y="11" width="14" height="14" rx="1" stroke="#00E5C8" stroke-width="1" opacity="0.5"/>
+          <rect x="14" y="14" width="8" height="8" rx="1" fill="#00E5C8" opacity="0.2"/>
+          <line x1="9" y1="5" x2="9" y2="3" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="14" y1="5" x2="14" y2="3" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22" y1="5" x2="22" y2="3" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="27" y1="5" x2="27" y2="3" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="arch-node-name">Raspberry Pi 5</div>
+        <div style="font-size:0.75rem; color:var(--muted);">16GB RAM · ARM Cortex-A76</div>
+      </div>
+      <div class="arch-node">
+        <div class="arch-node-label">Inference</div>
+        <svg style="margin:0 auto 10px;display:block;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M6 28 L10 20 L16 24 L22 12 L30 20" stroke="#00E5C8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+          <circle cx="10" cy="20" r="2" fill="#00E5C8" opacity="0.6"/>
+          <circle cx="16" cy="24" r="2" fill="#00E5C8" opacity="0.6"/>
+          <circle cx="22" cy="12" r="2" fill="#00E5C8" opacity="0.6"/>
+        </svg>
+        <div class="arch-node-name">Qwen2.5-Math LLM</div>
+        <div style="font-size:0.75rem; color:var(--muted);">Q5_K_M · 4.1GB</div>
+      </div>
+    </div>
+
+    <!-- Cascade Table -->
+    <p class="fade-in" style="color:var(--muted); font-size:0.875rem; margin-bottom:12px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.05em; margin-top:48px;">4-TIER CASCADE ROUTING</p>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden;" class="fade-in">
+      <table class="cascade-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Engine</th>
+            <th>Energy</th>
+            <th>Latency</th>
+            <th>Query Share</th>
+            <th>Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tier-badge" style="background:rgba(34,197,94,0.1); color:#22c55e; border:1px solid rgba(34,197,94,0.2);">T1</span></td>
+            <td style="color:#fff; font-weight:500;">SymPy</td>
+            <td><span class="teal mono">0.24 Ws</span></td>
+            <td class="mono" style="font-size:0.8rem;">8.7ms</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>45%</span></div>
+                <div class="prog-track"><div class="prog-fill" data-width="45"></div></div>
+              </div>
+            </td>
+            <td style="color:var(--muted); font-size:0.82rem;">Symbolic math, arithmetic</td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background:rgba(59,130,246,0.1); color:#60a5fa; border:1px solid rgba(59,130,246,0.2);">T2</span></td>
+            <td style="color:#fff; font-weight:500;">Wolfram Alpha</td>
+            <td><span class="mono" style="color:#60a5fa;">0.70 Ws</span></td>
+            <td class="mono" style="font-size:0.8rem;">2–5s</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>30%</span></div>
+                <div class="prog-track"><div class="prog-fill" data-width="30"></div></div>
+              </div>
+            </td>
+            <td style="color:var(--muted); font-size:0.82rem;">Online fallback, verification</td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background:rgba(0,229,200,0.08); color:var(--teal); border:1px solid rgba(0,229,200,0.2);">T3</span></td>
+            <td style="color:#fff; font-weight:500;">LLM (Qwen2.5-Math)</td>
+            <td><span class="mono" style="color:#f59e0b;">273 Ws</span></td>
+            <td class="mono" style="font-size:0.8rem;">15–30s</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>20%</span></div>
+                <div class="prog-track"><div class="prog-fill" data-width="20"></div></div>
+              </div>
+            </td>
+            <td style="color:var(--muted); font-size:0.82rem;">Proofs, explanations, reasoning</td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background:rgba(107,114,128,0.1); color:#9ca3af; border:1px solid rgba(107,114,128,0.2);">T4</span></td>
+            <td style="color:#fff; font-weight:500;">Graceful Decline</td>
+            <td><span class="mono" style="color:#9ca3af;">~0 Ws</span></td>
+            <td class="mono" style="font-size:0.8rem;">instant</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>5%</span></div>
+                <div class="prog-track"><div class="prog-fill" data-width="5"></div></div>
+              </div>
+            </td>
+            <td style="color:var(--muted); font-size:0.82rem;">Out-of-domain queries</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stat-row fade-in" style="margin-top:24px;">
+      <div class="stat-badge">Battery: <strong>3.79 Wh → 0.61 Wh</strong></div>
+      <div class="stat-badge">Efficiency gain: <strong>6× more sessions</strong></div>
+      <div class="stat-badge">Routing accuracy: <strong>90%+</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section id="challenges">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">04 — Technical Challenges</p>
+      <h2 class="section-title">Where the hard<br/>problems lived.</h2>
+    </div>
+    <div class="divider"></div>
+    <div class="challenge-grid">
+
+      <!-- Challenge 1 -->
+      <div class="challenge-card fade-in">
+        <div class="challenge-num">CHALLENGE 01</div>
+        <div class="challenge-title">Quantization: Fitting 28GB into 4GB</div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:16px;">Needed to fit a 7B parameter model (28–32GB full precision) onto a Pi with 16GB RAM. Systematic testing revealed a counterintuitive sweet spot.</p>
+        <div style="display:grid; gap:8px; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.1); border-radius:6px; padding:8px 12px;">
+            <span class="mono" style="font-size:0.78rem; color:#ef4444;">Q8_0</span>
+            <span style="font-size:0.78rem; color:var(--muted);">Too slow for interactive use</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.1); border-radius:6px; padding:8px 12px;">
+            <span class="mono" style="font-size:0.78rem; color:#ef4444;">Q4_0</span>
+            <span style="font-size:0.78rem; color:var(--muted);">Produces incoherent output</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.15); border-radius:6px; padding:8px 12px;">
+            <span class="mono" style="font-size:0.78rem; color:#fbbf24;">Q4_K_M</span>
+            <span style="font-size:0.78rem; color:var(--muted);">Fast, but accuracy loss</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,229,200,0.05); border:1px solid rgba(0,229,200,0.2); border-radius:6px; padding:8px 12px;">
+            <span class="mono" style="font-size:0.78rem; color:var(--teal);">Q5_K_M ✓</span>
+            <span style="font-size:0.78rem; color:#fff;">4.1GB · 2–5 tok/s · 70–80% acc.</span>
+          </div>
+        </div>
+        <div class="finding">Counterintuitive: quantized model runs <em>faster</em> than full precision — bottleneck is memory bandwidth, not compute.</div>
+      </div>
+
+      <!-- Challenge 2 -->
+      <div class="challenge-card fade-in">
+        <div class="challenge-num">CHALLENGE 02</div>
+        <div class="challenge-title">The Mac-to-Pi Mystery</div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:16px;">Identical model file: 80–85% accuracy on MacBook M2, 40% on Pi. Classic hardware-specific bug.</p>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:16px;"><strong style="color:#fff;">Root cause:</strong> Raspberry Pi wasn't using ARM NEON SIMD instructions. Bit-packing errors compounded silently across all 32 transformer layers.</p>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:4px;"><strong style="color:#fff;">Fix:</strong> Recompiled llama.cpp with ARM NEON optimizations:</p>
+        <div class="code-block">cmake .. -DLLAMA_NATIVE=ON \
+         -DLLAMA_NEON=ON</div>
+        <div class="finding">Result: accuracy restored from 40% → 70–80%. A two-flag fix for a 40-point accuracy gap.</div>
+      </div>
+
+      <!-- Challenge 3 -->
+      <div class="challenge-card fade-in">
+        <div class="challenge-num">CHALLENGE 03</div>
+        <div class="challenge-title">Energy: The 1,137× Problem</div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:16px;">The LLM consumed 1,137× more energy per query than SymPy. At that rate, a full battery couldn't sustain a homework session.</p>
+        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border); border-radius:6px; padding:14px; margin-bottom:16px; font-family:'IBM Plex Mono',monospace; font-size:0.75rem;">
+          <div style="color:#ef4444;">LLM:  9.1W × 30s = <strong style="color:#ef4444;">273 Ws</strong> per query</div>
+          <div style="color:#22c55e; margin-top:6px;">SymPy: 4.8W × 0.05s = <strong style="color:#22c55e;">0.24 Ws</strong> per query</div>
+        </div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:8px;">Small optimizations compounded:</p>
+        <ul style="font-size:0.82rem; color:var(--muted); list-style:none; display:grid; gap:4px;">
+          <li style="display:flex; gap:8px; align-items:start;"><span class="teal">→</span> Query caching saved 15% of computations</li>
+          <li style="display:flex; gap:8px; align-items:start;"><span class="teal">→</span> 2048 token context window: 30% faster inference</li>
+          <li style="display:flex; gap:8px; align-items:start;"><span class="teal">→</span> Disabling HDMI/Bluetooth/LEDs saved 0.7W</li>
+        </ul>
+        <div class="finding">Cascade architecture: route to cheapest tier first. 45% of queries never touch the LLM.</div>
+      </div>
+
+      <!-- Challenge 4 -->
+      <div class="challenge-card fade-in">
+        <div class="challenge-num">CHALLENGE 04</div>
+        <div class="challenge-title">Thermal: Keeping the Pi Alive</div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:16px;">Under sustained LLM load, the Pi hit 83°C. The CPU throttled from 2.4GHz → 1.8GHz — a 30–40% inference slowdown.</p>
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+          <div style="text-align:center;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:1.4rem; font-weight:500; color:#ef4444;">83°C</div>
+            <div style="font-size:0.72rem; color:var(--muted);">Throttle temp</div>
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#00E5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="text-align:center;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:1.4rem; font-weight:500; color:#22c55e;">65–70°C</div>
+            <div style="font-size:0.72rem; color:var(--muted);">Stable w/ cooler</div>
+          </div>
+        </div>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:4px;"><strong style="color:#fff;">Solution:</strong> iUniker aluminum tower cooler + 30mm 5V fan. Validated across 30-minute stress tests.</p>
+        <div class="finding">Next phase: PWM fan control triggered above 72°C for adaptive noise management.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section id="status" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">05 — Current Status</p>
+      <h2 class="section-title">What's working,<br/>what's next.</h2>
+    </div>
+    <div class="divider"></div>
+    <div class="status-grid fade-in">
+      <div class="status-col working">
+        <div class="status-col-title">✓ Working</div>
+        <div class="status-item working"><div class="status-dot"></div><span>4-tier cascade routing, 90%+ accuracy</span></div>
+        <div class="status-item working"><div class="status-dot"></div><span>SymPy: 80% accuracy, 8.7ms average response</span></div>
+        <div class="status-item working"><div class="status-dot"></div><span>LLM inference: 70–80% accuracy, 2–5 tok/s</span></div>
+        <div class="status-item working"><div class="status-dot"></div><span>Thermal validated (30-min stress test, 65–70°C)</span></div>
+        <div class="status-item working"><div class="status-dot"></div><span>ESP32 power monitoring (INA219 sensor)</span></div>
+        <div class="status-item working"><div class="status-dot"></div><span>Template-based TI-84 interface (code complete)</span></div>
+      </div>
+      <div class="status-col indev">
+        <div class="status-col-title">⟳ In Development</div>
+        <div class="status-item indev"><div class="status-dot"></div><span>Battery deployment — Waveshare UPS HAT (18.5Wh, projected 6–8hr runtime)</span></div>
+        <div class="status-item indev"><div class="status-dot"></div><span>TI-84 serial interface (hardware testing pending)</span></div>
+        <div class="status-item indev"><div class="status-dot"></div><span>ESP32 wireless bridge — Phase 3</span></div>
+        <div class="status-item indev"><div class="status-dot"></div><span>NPU HAT for visual learning &amp; digit recognition — Phase 4</span></div>
+        <div class="status-item indev"><div class="status-dot"></div><span>Velocity-time graphs drawn on TI-84 screen — Phase 5</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section id="takeaways">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">06 — Takeaways</p>
+      <h2 class="section-title">What building this<br/>actually taught me.</h2>
+    </div>
+    <div class="divider"></div>
+    <div class="takeaway-list fade-in">
+      <div class="takeaway-item">
+        <div class="takeaway-num">01</div>
+        <div class="takeaway-body">
+          <h4>Constraints drive creativity.</h4>
+          <p>The 16GB RAM limit forced me into quantization. The battery constraint forced the cascade architecture. The best engineering solutions I found came from having no choice but to be clever.</p>
+        </div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">02</div>
+        <div class="takeaway-body">
+          <h4>Small optimizations compound into large innovations.</h4>
+          <p>Saving 2.15W in aggregate — HDMI off, context tuning, caching — unlocked chain-of-thought reasoning and made NPU integration feasible. No single optimization was dramatic. All of them together were.</p>
+        </div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">03</div>
+        <div class="takeaway-body">
+          <h4>Engineering is about knowing which corners to cut and which to obsess over.</h4>
+          <p>I obsessed over SIMD flags that recovered 40 accuracy points. I cut a dedicated display to save memory bandwidth. The judgment of where to care deeply is the whole craft.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">07 — About the Builder</p>
+    </div>
+    <div class="about-card fade-in">
+      <div style="display:flex; align-items:center; gap:20px; margin-bottom:28px; flex-wrap:wrap;">
+        <div class="avatar">TW</div>
+        <div>
+          <div class="about-name">Trammell Whitfield</div>
+          <div class="about-loc">// Seattle, Washington</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); margin-bottom:16px;">Seattle-raised high school senior heading to college for computer and electrical engineering, with hopes to specialize in photonic communication.</p>
+      <p style="color:var(--text); margin-bottom:16px;">During sophomore and junior year, I spent Fridays tutoring homeless students in math in Seattle. The moment that changed everything wasn't when they got the answer right — it was right before. Watching their eyes when they realized they actually understood.</p>
+      <p style="color:var(--text); margin-bottom:24px;">That moment taught me something: access to quality education shouldn't depend on your zip code, your family's income, or whether you have stable WiFi.</p>
+      <blockquote>The question that started it all: "What if AI could teach like a real tutor? What if it could work anywhere — even without internet?" That question became S1Pher.</blockquote>
+      <p style="margin-top:24px; font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--teal); letter-spacing:0.04em;">"I build things that democratize access to information."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-quote fade-in">
+    "The moment when a student's eyes light up because they figured it out themselves shouldn't be a luxury. With the right engineering, it doesn't have to be."
+  </div>
+  <div class="footer-links fade-in">
+    <a href="https://github.com/Trammell-Whitfield/The_Teaching_Calculator" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline; vertical-align:middle; margin-right:5px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub Repository
+    </a>
+    <span style="color:var(--border);">|</span>
+    <a href="#hero">Back to top ↑</a>
+  </div>
+  <div class="footer-byline">Built by Trammell Whitfield · The Teaching Calculator · 2024</div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-ins
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Animate progress bars inside this element
+          entry.target.querySelectorAll('.prog-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    observer.observe(el);
+  });
+
+  // Also trigger progress bars that are already visible on load
+  document.querySelectorAll('.prog-fill').forEach(bar => {
+    setTimeout(() => {
+      if (bar.closest('.visible')) bar.style.width = bar.dataset.width + '%';
+    }, 800);
+  });
+</script>
+</body>
+</html>
