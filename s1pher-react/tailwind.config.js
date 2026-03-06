@@ -20,6 +20,9 @@ export default {
         card: '#0F1923',
         border: 'rgba(0,229,200,0.12)',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       fontFamily: {
         sans: ['IBM Plex Sans', 'sans-serif'],
         mono: ['IBM Plex Mono', 'monospace'],
