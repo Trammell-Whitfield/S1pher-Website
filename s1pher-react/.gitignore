@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# API Keys and Secrets
+API_Key_forchatgpt.md
+*.env
+.env.local
+.env.production
+.env*.local
+**/secrets/**
+**/*secret*
+**/*key*.txt
+**/*api*.md
