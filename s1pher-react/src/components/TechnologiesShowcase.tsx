@@ -46,13 +46,13 @@ export function TechnologiesShowcase() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-orange text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
+          <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
             Core Technologies
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
             Building the<br />Infrastructure Layer
           </h2>
-          <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Researching and developing the foundational technologies for next-generation distributed computing
           </p>
         </motion.div>
@@ -68,24 +68,24 @@ export function TechnologiesShowcase() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-card border border-white/10 rounded-2xl p-8 md:p-10 hover:border-orange/30 hover:shadow-[0_20px_60px_rgba(255,107,53,0.15)] transition-all duration-500 cursor-default overflow-hidden"
+                className="group relative bg-card border border-white/10 rounded-2xl p-8 md:p-10 hover:border-white/30 hover:shadow-[0_20px_60px_rgba(255,255,255,0.05)] transition-all duration-500 cursor-default overflow-hidden"
               >
                 {/* Gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 <div className="relative">
                   {/* Icon */}
                   <div className="mb-6">
-                    <div className="w-16 h-16 rounded-xl bg-orange/10 border border-orange/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                      <Icon className="w-8 h-8 text-orange" />
+                    <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-orange group-hover:bg-orange/5 transition-all duration-500">
+                      <Icon className="w-8 h-8 text-white group-hover:text-orange" />
                     </div>
                   </div>
 
                   {/* Title and description */}
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 group-hover:text-orange transition-colors duration-300">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 transition-colors duration-300">
                     {tech.title}
                   </h3>
-                  <p className="text-white/80 text-base mb-6 leading-relaxed">
+                  <p className="text-gray-300 text-base mb-6 leading-relaxed">
                     {tech.description}
                   </p>
 
@@ -94,9 +94,9 @@ export function TechnologiesShowcase() {
                     {tech.features.map((feature) => (
                       <div
                         key={feature}
-                        className="flex items-center gap-2 text-sm text-white/60 font-mono"
+                        className="flex items-center gap-2 text-sm text-gray-400 font-mono"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-orange" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-orange transition-colors duration-300" />
                         {feature}
                       </div>
                     ))}
@@ -104,7 +104,7 @@ export function TechnologiesShowcase() {
                 </div>
 
                 {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             );
           })}
