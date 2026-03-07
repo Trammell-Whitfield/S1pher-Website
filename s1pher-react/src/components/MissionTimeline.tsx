@@ -8,8 +8,8 @@ const phases = [
     description: 'Distributed networks for resilient edge computing',
     icon: Network,
     opacity: 1,
-    borderColor: 'border-orange',
-    iconColor: 'text-orange',
+    borderColor: 'border-white/30',
+    iconColor: 'text-white',
   },
   {
     status: 'Next',
@@ -41,7 +41,7 @@ export function MissionTimeline() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-orange text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
+          <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
             The Mission
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-8">
@@ -77,21 +77,21 @@ export function MissionTimeline() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   whileHover={{ opacity: 1, scale: 1.02 }}
-                  className={`group bg-card border ${phase.borderColor} rounded-xl p-6 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,107,53,0.15)] cursor-default`}
+                  className={`group bg-card border ${phase.borderColor} rounded-xl p-6 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:border-white/40 cursor-default`}
                   style={{ opacity: phase.opacity }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg bg-orange/5 border border-orange/20 ${phase.iconColor} group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-3 rounded-lg bg-white/5 border border-white/10 ${phase.iconColor} group-hover:scale-110 group-hover:border-orange group-hover:text-orange group-hover:bg-orange/5 transition-all duration-300`}>
                       <Icon className="w-5 h-5" />
                     </div>
                     <div className="flex-1">
-                      <div className={`text-xs font-mono uppercase tracking-wider mb-2 ${phase.status === 'Now' ? 'text-orange' : 'text-white/40'}`}>
+                      <div className={`text-xs font-mono uppercase tracking-wider mb-2 ${phase.status === 'Now' ? 'text-white' : 'text-white/40'}`}>
                         {phase.status}
                       </div>
-                      <div className="text-white font-semibold text-base md:text-lg mb-1.5 group-hover:text-orange transition-colors duration-300">
+                      <div className="text-white font-semibold text-base md:text-lg mb-1.5 transition-colors duration-300">
                         {phase.title}
                       </div>
-                      <div className="text-sm text-white/50 leading-relaxed">
+                      <div className="text-sm text-gray-400 leading-relaxed">
                         {phase.description}
                       </div>
                     </div>
