@@ -18,7 +18,7 @@ export function PrototypesPage() {
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 text-gray-400 text-sm font-medium hover:text-orange transition-colors duration-300"
+            className="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-orange transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -61,7 +61,7 @@ export function PrototypesPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
             The teaching calculator was the spark that ignited this journey — a proof of concept that offline AI could democratize access to education. While our focus has evolved to advanced communication networks, this project remains a testament to where it all began.
           </motion.p>
@@ -86,7 +86,7 @@ export function PrototypesPage() {
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
                 From EdTech to Infrastructure
               </h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <p className="text-white/80 leading-relaxed mb-6">
                 Building the Teaching Calculator revealed fundamental limitations in current computing architectures. The need for low-latency, high-bandwidth communication at the edge led us to explore photonic interconnects and mesh computing — technologies that could reshape not just education, but the entire landscape of distributed computing.
               </p>
               <Link
@@ -104,7 +104,7 @@ export function PrototypesPage() {
       {/* Footer */}
       <footer className="relative border-t border-white/10 py-12">
         <div className="max-w-7xl mx-auto px-8 md:px-12 text-center">
-          <div className="text-xs font-mono text-gray-600">
+          <div className="text-xs font-mono text-white/40">
             S1Pher · Advanced Communication Networks · 2024-2026
           </div>
         </div>
