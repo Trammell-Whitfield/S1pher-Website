@@ -119,7 +119,7 @@ export function ImpactStats() {
                 </div>
 
                 {/* Description */}
-                <div className="relative text-sm text-gray-500 font-mono">
+                <div className="relative text-sm text-white/60 font-mono">
                   {stat.description}
                 </div>
 
