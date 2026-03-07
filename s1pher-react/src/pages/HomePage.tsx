@@ -62,17 +62,17 @@ export function HomePage() {
             <div className="flex items-center justify-center gap-6 flex-wrap mb-10">
               <Link
                 to="/prototypes"
-                className="text-gray-400 text-sm hover:text-orange transition-colors duration-300"
+                className="text-white/80 text-sm hover:text-orange transition-colors duration-300"
               >
                 Research Prototypes
               </Link>
-              <span className="text-gray-600">|</span>
-              <a href="#" className="text-gray-400 text-sm hover:text-orange transition-colors duration-300">
+              <span className="text-white/40">|</span>
+              <a href="#" className="text-white/80 text-sm hover:text-orange transition-colors duration-300">
                 Back to top ↑
               </a>
             </div>
 
-            <div className="text-xs font-mono text-gray-600">
+            <div className="text-xs font-mono text-white/40">
               S1Pher · Advanced Communication Networks · 2024-2026
             </div>
           </div>
