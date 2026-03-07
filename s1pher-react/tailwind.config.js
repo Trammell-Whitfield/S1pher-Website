@@ -24,6 +24,19 @@ export default {
         },
         card: '#0F0F0F',
         border: 'rgba(255,255,255,0.1)',
+        // Enhanced grayscale for primary design
+        gray: {
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -47,10 +60,10 @@ export default {
         },
         glowPulse: {
           '0%, 100%': {
-            textShadow: '0 0 28px rgba(255,107,53,0.45), 0 0 56px rgba(255,107,53,0.25)'
+            textShadow: '0 0 28px rgba(255,140,66,0.2), 0 0 56px rgba(255,140,66,0.1)'
           },
           '50%': {
-            textShadow: '0 0 38px rgba(255,107,53,0.65), 0 0 76px rgba(255,107,53,0.35)'
+            textShadow: '0 0 38px rgba(255,140,66,0.3), 0 0 76px rgba(255,140,66,0.15)'
           },
         },
         gridPulse: {
