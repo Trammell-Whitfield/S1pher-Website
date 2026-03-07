@@ -42,7 +42,7 @@ export function ProjectShowcase() {
                 The Teaching<br />Calculator
               </h2>
 
-              <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mb-8">
+              <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-xl mb-8">
                 An offline AI math tutor built into the calculator students already own — the first physical instantiation of S1Pher's mission.
               </p>
 
@@ -57,7 +57,7 @@ export function ProjectShowcase() {
                     <div className="text-2xl md:text-3xl font-display font-bold text-orange mb-1 group-hover:scale-110 transition-transform duration-300">
                       {metric.value}
                     </div>
-                    <div className="text-xs font-mono text-gray-500 uppercase tracking-wide">
+                    <div className="text-xs font-mono text-white/60 uppercase tracking-wide">
                       {metric.label}
                     </div>
                   </motion.div>
@@ -75,7 +75,7 @@ export function ProjectShowcase() {
 
             {/* Tech Stack */}
             <div className="flex flex-col gap-3">
-              <div className="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">
+              <div className="text-xs font-mono uppercase tracking-wider text-white/60 mb-2">
                 Stack
               </div>
               {techStack.map((tech, index) => {
