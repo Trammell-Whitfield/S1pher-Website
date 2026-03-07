@@ -23,18 +23,18 @@ export function ProjectShowcase() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative bg-card border border-orange/25 rounded-2xl p-10 md:p-14 overflow-hidden"
+          className="relative bg-card border border-white/20 rounded-2xl p-10 md:p-14 overflow-hidden"
         >
           {/* Top accent line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange via-blue-500 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-white/40 via-white/20 to-transparent" />
 
           {/* Background glow */}
-          <div className="absolute top-[-140px] right-[-140px] w-[400px] h-[400px] rounded-full bg-gradient-radial from-orange/10 to-transparent pointer-events-none" />
+          <div className="absolute top-[-140px] right-[-140px] w-[400px] h-[400px] rounded-full bg-gradient-radial from-white/5 to-transparent pointer-events-none" />
 
           <div className="relative z-10 grid md:grid-cols-3 gap-8">
             {/* Main content */}
             <div className="md:col-span-2">
-              <div className="text-xs font-mono uppercase tracking-[0.2em] text-orange mb-3">
+              <div className="text-xs font-mono uppercase tracking-[0.2em] text-gray-400 mb-3">
                 S1Pher · Prototype 01
               </div>
 
@@ -42,7 +42,7 @@ export function ProjectShowcase() {
                 The Teaching<br />Calculator
               </h2>
 
-              <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-xl mb-8">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mb-8">
                 An offline AI math tutor built into the calculator students already own — the first physical instantiation of S1Pher's mission.
               </p>
 
@@ -52,12 +52,12 @@ export function ProjectShowcase() {
                   <motion.div
                     key={metric.label}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-orange/5 border border-orange/20 rounded-lg p-4 text-center group cursor-default hover:bg-orange/10 transition-all duration-300"
+                    className="bg-white/5 border border-white/20 rounded-lg p-4 text-center group cursor-default hover:bg-white/10 hover:border-orange transition-all duration-300"
                   >
-                    <div className="text-2xl md:text-3xl font-display font-bold text-orange mb-1 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl md:text-3xl font-display font-bold text-white group-hover:text-orange mb-1 group-hover:scale-110 transition-all duration-300">
                       {metric.value}
                     </div>
-                    <div className="text-xs font-mono text-white/60 uppercase tracking-wide">
+                    <div className="text-xs font-mono text-gray-400 uppercase tracking-wide">
                       {metric.label}
                     </div>
                   </motion.div>
@@ -66,7 +66,7 @@ export function ProjectShowcase() {
 
               <a
                 href="#problem"
-                className="inline-flex items-center gap-2 text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 text-white hover:text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
               >
                 Read Full Case Study
                 <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
@@ -75,7 +75,7 @@ export function ProjectShowcase() {
 
             {/* Tech Stack */}
             <div className="flex flex-col gap-3">
-              <div className="text-xs font-mono uppercase tracking-wider text-white/60 mb-2">
+              <div className="text-xs font-mono uppercase tracking-wider text-gray-400 mb-2">
                 Stack
               </div>
               {techStack.map((tech, index) => {
@@ -88,7 +88,7 @@ export function ProjectShowcase() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
-                    className="group border border-orange/20 rounded-full px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-orange bg-orange/5 hover:bg-orange/15 hover:border-orange/35 transition-all duration-300 cursor-default flex items-center gap-3"
+                    className="group border border-white/20 rounded-full px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-white bg-white/5 hover:bg-white/10 hover:border-orange hover:text-orange transition-all duration-300 cursor-default flex items-center gap-3"
                   >
                     <Icon className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                     {tech.name}
