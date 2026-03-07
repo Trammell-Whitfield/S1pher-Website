@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#070B0F] text-[#C8D8E8] font-sans antialiased;
+    @apply bg-black text-white font-sans antialiased;
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
