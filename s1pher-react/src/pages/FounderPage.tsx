@@ -46,7 +46,7 @@ export function FounderPage() {
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 text-gray-400 text-sm font-medium hover:text-orange transition-colors duration-300"
+            className="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-orange transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -90,7 +90,7 @@ export function FounderPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-center gap-2 text-gray-400 font-mono text-sm mb-8"
+            className="flex items-center justify-center gap-2 text-white/80 font-mono text-sm mb-8"
           >
             <MapPin className="w-4 h-4 text-orange" />
             Seattle, Washington
@@ -100,7 +100,7 @@ export function FounderPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
             From finance to photonics — building the infrastructure for intelligent, low-power distributed systems
           </motion.p>
@@ -124,7 +124,7 @@ export function FounderPage() {
               <p>
                 He is now looking forward to going to college for <span className="text-orange font-semibold">electrical and computer engineering</span> with an emphasis in <span className="text-orange font-semibold">photonic research</span>.
               </p>
-              <p className="text-gray-400">
+              <p className="text-white/80">
                 He is interested in making low-power communication systems and bringing intelligence to small devices.
               </p>
             </div>
@@ -170,7 +170,7 @@ export function FounderPage() {
                       <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-orange transition-colors duration-300">
                         {phase.title}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-white/80 text-sm leading-relaxed">
                         {phase.description}
                       </p>
                     </div>
@@ -237,7 +237,7 @@ export function FounderPage() {
             <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
               The Vision
             </h3>
-            <p className="text-gray-400 text-lg leading-relaxed mb-6">
+            <p className="text-white/80 text-lg leading-relaxed mb-6">
               "The most powerful technologies are the ones that fade into the background. Intelligence shouldn't require cloud connectivity or massive power budgets — it should be embedded, efficient, and accessible everywhere."
             </p>
             <Link
@@ -254,7 +254,7 @@ export function FounderPage() {
       {/* Footer */}
       <footer className="relative border-t border-white/10 py-12">
         <div className="max-w-7xl mx-auto px-8 md:px-12 text-center">
-          <div className="text-xs font-mono text-gray-600">
+          <div className="text-xs font-mono text-white/40">
             S1Pher · Advanced Communication Networks · 2024-2026
           </div>
         </div>
