@@ -12,13 +12,18 @@ export default {
           DEFAULT: '#00E5C8',
           dim: '#00b8a0',
         },
-        bg: {
-          DEFAULT: '#070B0F',
-          2: '#0D1117',
-          3: '#111820',
+        orange: {
+          DEFAULT: '#FF8C42',
+          bright: '#FFA559',
+          dim: '#FF6B35',
         },
-        card: '#0F1923',
-        border: 'rgba(0,229,200,0.12)',
+        bg: {
+          DEFAULT: '#000000',
+          2: '#0A0A0A',
+          3: '#141414',
+        },
+        card: '#0F0F0F',
+        border: 'rgba(255,255,255,0.1)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -42,10 +47,10 @@ export default {
         },
         glowPulse: {
           '0%, 100%': {
-            textShadow: '0 0 28px rgba(0,229,200,0.45), 0 0 56px rgba(0,229,200,0.25)'
+            textShadow: '0 0 28px rgba(255,107,53,0.45), 0 0 56px rgba(255,107,53,0.25)'
           },
           '50%': {
-            textShadow: '0 0 38px rgba(0,229,200,0.65), 0 0 76px rgba(0,229,200,0.35)'
+            textShadow: '0 0 38px rgba(255,107,53,0.65), 0 0 76px rgba(255,107,53,0.35)'
           },
         },
         gridPulse: {
