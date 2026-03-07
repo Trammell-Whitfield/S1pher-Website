@@ -52,7 +52,7 @@ export function TechnologiesShowcase() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
             Building the<br />Infrastructure Layer
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Researching and developing the foundational technologies for next-generation distributed computing
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ export function TechnologiesShowcase() {
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 group-hover:text-orange transition-colors duration-300">
                     {tech.title}
                   </h3>
-                  <p className="text-gray-400 text-base mb-6 leading-relaxed">
+                  <p className="text-white/80 text-base mb-6 leading-relaxed">
                     {tech.description}
                   </p>
 
@@ -94,7 +94,7 @@ export function TechnologiesShowcase() {
                     {tech.features.map((feature) => (
                       <div
                         key={feature}
-                        className="flex items-center gap-2 text-sm text-gray-500 font-mono"
+                        className="flex items-center gap-2 text-sm text-white/60 font-mono"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-orange" />
                         {feature}
