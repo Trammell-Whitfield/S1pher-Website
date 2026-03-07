@@ -45,7 +45,7 @@ export function HowItWorks() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
             How It Works
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             From problem to solution in seconds — completely offline
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export function HowItWorks() {
                       <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-orange transition-colors duration-300">
                         {step.title}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-white/80 text-sm leading-relaxed">
                         {step.description}
                       </p>
                     </div>
