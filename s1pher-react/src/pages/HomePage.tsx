@@ -11,23 +11,23 @@ export function HomePage() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/90 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 md:px-12 py-5 flex items-center justify-between">
-          <span className="font-display font-extrabold text-xl text-orange tracking-tight">
+          <span className="font-display font-extrabold text-xl text-white tracking-tight hover:text-orange transition-colors duration-300">
             S1Pher //
           </span>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#mission" className="text-white/60 text-sm font-medium hover:text-orange transition-colors duration-300">
+            <a href="#mission" className="text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300">
               Mission
             </a>
-            <a href="#vision" className="text-white/60 text-sm font-medium hover:text-orange transition-colors duration-300">
+            <a href="#vision" className="text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300">
               Vision
             </a>
-            <Link to="/prototypes" className="text-white/60 text-sm font-medium hover:text-orange transition-colors duration-300">
+            <Link to="/prototypes" className="text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300">
               Prototypes
             </Link>
-            <Link to="/founder" className="text-white/60 text-sm font-medium hover:text-orange transition-colors duration-300">
+            <Link to="/founder" className="text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300">
               Founder
             </Link>
-            <a href="#contact" className="text-white/60 text-sm font-medium hover:text-orange transition-colors duration-300">
+            <a href="#contact" className="text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300">
               Contact
             </a>
           </div>
@@ -62,12 +62,12 @@ export function HomePage() {
             <div className="flex items-center justify-center gap-6 flex-wrap mb-10">
               <Link
                 to="/prototypes"
-                className="text-white/80 text-sm hover:text-orange transition-colors duration-300"
+                className="text-gray-400 text-sm hover:text-white transition-colors duration-300"
               >
                 Research Prototypes
               </Link>
               <span className="text-white/40">|</span>
-              <a href="#" className="text-white/80 text-sm hover:text-orange transition-colors duration-300">
+              <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors duration-300">
                 Back to top ↑
               </a>
             </div>
