@@ -71,7 +71,7 @@ export function ContactCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-gray-400 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto"
+              className="text-white/80 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto"
             >
               Whether you're an educator, researcher, or developer — if you share the vision of democratizing access to intelligent tools, let's talk.
             </motion.p>
@@ -110,7 +110,7 @@ export function ContactCTA() {
                         {link.label}
                         <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="text-xs text-gray-500 font-mono">
+                      <div className="text-xs text-white/60 font-mono">
                         {link.description}
                       </div>
                     </div>
@@ -142,7 +142,7 @@ export function ContactCTA() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="mt-12 text-sm text-gray-500 font-mono"
+              className="mt-12 text-sm text-white/60 font-mono"
             >
               Currently seeking partnerships in education technology & hardware research
             </motion.p>
