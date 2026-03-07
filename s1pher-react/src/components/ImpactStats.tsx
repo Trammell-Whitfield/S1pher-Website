@@ -67,7 +67,7 @@ export function ImpactStats() {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-bg-2 to-black opacity-50" />
 
       {/* Animated grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,53,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,53,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative max-w-7xl mx-auto px-8 md:px-12">
         <motion.div
@@ -77,7 +77,7 @@ export function ImpactStats() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-orange text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
+          <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
             Impact & Performance
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight">
@@ -96,20 +96,20 @@ export function ImpactStats() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-card border border-white/10 rounded-2xl p-8 hover:border-orange/30 hover:shadow-[0_20px_60px_rgba(255,107,53,0.15)] transition-all duration-500 cursor-default overflow-hidden"
+                className="group relative bg-card border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:shadow-[0_20px_60px_rgba(255,255,255,0.05)] transition-all duration-500 cursor-default overflow-hidden"
               >
                 {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Icon */}
                 <div className="relative mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-orange/10 border border-orange/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                    <Icon className="w-7 h-7 text-orange" />
+                  <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-orange group-hover:bg-orange/5 transition-all duration-500">
+                    <Icon className="w-7 h-7 text-white group-hover:text-orange" />
                   </div>
                 </div>
 
                 {/* Counter */}
-                <div className="relative text-4xl md:text-5xl font-display font-bold text-white mb-2 group-hover:text-orange transition-colors duration-500">
+                <div className="relative text-4xl md:text-5xl font-display font-bold text-white mb-2 transition-colors duration-500">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
 
@@ -119,12 +119,12 @@ export function ImpactStats() {
                 </div>
 
                 {/* Description */}
-                <div className="relative text-sm text-white/60 font-mono">
+                <div className="relative text-sm text-gray-400 font-mono">
                   {stat.description}
                 </div>
 
                 {/* Decorative corner accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             );
           })}
