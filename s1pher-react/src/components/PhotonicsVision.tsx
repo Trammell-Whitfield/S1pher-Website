@@ -18,7 +18,7 @@ export function PhotonicsVision() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
             Photonic<br />Communication
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Next-generation computing at the speed of light. Building toward chip-to-chip photonic interconnects that will redefine the boundaries of edge AI.
           </p>
         </motion.div>
@@ -88,7 +88,7 @@ export function PhotonicsVision() {
               <h3 className="text-white font-display font-bold text-lg md:text-xl mb-3 group-hover:text-orange transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-white/80 text-sm leading-relaxed">
                 {item.description}
               </p>
             </motion.div>
@@ -103,7 +103,7 @@ export function PhotonicsVision() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-400 font-mono text-sm">
+          <p className="text-white/80 font-mono text-sm">
             Currently pursuing undergraduate studies in Computer & Electrical Engineering
           </p>
           <p className="text-orange font-mono text-sm mt-2">
