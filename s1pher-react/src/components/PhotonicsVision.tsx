@@ -12,13 +12,13 @@ export function PhotonicsVision() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <p className="text-orange text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
+          <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
             The Vision
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
             Photonic<br />Communication
           </h2>
-          <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Next-generation computing at the speed of light. Building toward chip-to-chip photonic interconnects that will redefine the boundaries of edge AI.
           </p>
         </motion.div>
@@ -29,7 +29,7 @@ export function PhotonicsVision() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative h-[500px] md:h-[650px] w-full rounded-2xl border border-orange/30 overflow-hidden bg-bg-2"
+          className="relative h-[500px] md:h-[650px] w-full rounded-2xl border border-white/20 overflow-hidden bg-bg-2"
         >
           {/* Shader background */}
           <ShaderAnimation />
@@ -83,9 +83,9 @@ export function PhotonicsVision() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="group bg-card border border-white/10 rounded-xl p-6 hover:border-orange/30 hover:shadow-[0_8px_32px_rgba(255,107,53,0.1)] transition-all duration-300 cursor-default"
+              className="group bg-card border border-white/10 rounded-xl p-6 hover:border-white/30 hover:shadow-[0_8px_32px_rgba(255,255,255,0.05)] transition-all duration-300 cursor-default"
             >
-              <h3 className="text-white font-display font-bold text-lg md:text-xl mb-3 group-hover:text-orange transition-colors duration-300">
+              <h3 className="text-white font-display font-bold text-lg md:text-xl mb-3 transition-colors duration-300">
                 {item.title}
               </h3>
               <p className="text-white/80 text-sm leading-relaxed">
@@ -106,7 +106,7 @@ export function PhotonicsVision() {
           <p className="text-white/80 font-mono text-sm">
             Currently pursuing undergraduate studies in Computer & Electrical Engineering
           </p>
-          <p className="text-orange font-mono text-sm mt-2">
+          <p className="text-gray-400 font-mono text-sm mt-2">
             Target: Master's in Photonics → Research & Development
           </p>
         </motion.div>
