@@ -40,13 +40,13 @@ export function FounderPage() {
         <div className="max-w-7xl mx-auto px-8 md:px-12 py-5 flex items-center justify-between">
           <Link
             to="/"
-            className="font-display font-extrabold text-xl text-orange tracking-tight hover:scale-105 transition-transform duration-300"
+            className="font-display font-extrabold text-xl text-white tracking-tight hover:text-orange transition-colors duration-300"
           >
             S1Pher //
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-orange transition-colors duration-300"
+            className="flex items-center gap-2 text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -57,9 +57,9 @@ export function FounderPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background effects */}
-        <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] rounded-full bg-gradient-radial from-orange/10 to-transparent animate-float" />
-        <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] rounded-full bg-gradient-radial from-orange/8 to-transparent animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,53,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,53,0.025)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] rounded-full bg-gradient-radial from-white/5 to-transparent animate-float" />
+        <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] rounded-full bg-gradient-radial from-orange/5 to-transparent animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ export function FounderPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-orange text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
+            className="text-gray-400 text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
           >
             The Founder
           </motion.p>
@@ -83,16 +83,16 @@ export function FounderPage() {
             className="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-tight tracking-tight mb-6"
           >
             Trammell<br />
-            <span className="text-orange">Whitfield</span>
+            Whitfield
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-center gap-2 text-white/80 font-mono text-sm mb-8"
+            className="flex items-center justify-center gap-2 text-gray-300 font-mono text-sm mb-8"
           >
-            <MapPin className="w-4 h-4 text-orange" />
+            <MapPin className="w-4 h-4 text-white" />
             Seattle, Washington
           </motion.div>
 
@@ -115,14 +115,14 @@ export function FounderPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-card border border-orange/20 rounded-2xl p-10 md:p-14 mb-12"
+            className="bg-card border border-white/20 rounded-2xl p-10 md:p-14 mb-12"
           >
             <div className="text-lg md:text-xl text-white/90 leading-relaxed space-y-6">
               <p>
-                After working in the finance space in places like <span className="text-orange font-semibold">quantitative trading and analysis</span>, Trammell Whitfield moved on to pursue electrical engineering, spending time at different research teams developing <span className="text-orange font-semibold">embedded systems in edge AI tech/hardware</span>.
+                After working in the finance space in places like <span className="text-white font-semibold">quantitative trading and analysis</span>, Trammell Whitfield moved on to pursue electrical engineering, spending time at different research teams developing <span className="text-white font-semibold">embedded systems in edge AI tech/hardware</span>.
               </p>
               <p>
-                He is now looking forward to going to college for <span className="text-orange font-semibold">electrical and computer engineering</span> with an emphasis in <span className="text-orange font-semibold">photonic research</span>.
+                He is now looking forward to going to college for <span className="text-white font-semibold">electrical and computer engineering</span> with an emphasis in <span className="text-white font-semibold">photonic research</span>.
               </p>
               <p className="text-white/80">
                 He is interested in making low-power communication systems and bringing intelligence to small devices.
@@ -153,7 +153,7 @@ export function FounderPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ y: -8, scale: 1.02 }}
-                    className="group relative bg-card border border-white/10 rounded-2xl p-8 hover:border-orange/30 hover:shadow-[0_20px_60px_rgba(255,107,53,0.15)] transition-all duration-500 cursor-default overflow-hidden"
+                    className="group relative bg-card border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:shadow-[0_20px_60px_rgba(255,255,255,0.05)] transition-all duration-500 cursor-default overflow-hidden"
                   >
                     {/* Gradient background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${phase.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -161,13 +161,13 @@ export function FounderPage() {
                     <div className="relative">
                       {/* Icon */}
                       <div className="mb-6">
-                        <div className="w-14 h-14 rounded-xl bg-orange/10 border border-orange/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                          <Icon className="w-7 h-7 text-orange" />
+                        <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-orange group-hover:bg-orange/5 transition-all duration-500">
+                          <Icon className="w-7 h-7 text-white group-hover:text-orange" />
                         </div>
                       </div>
 
                       {/* Content */}
-                      <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-orange transition-colors duration-300">
+                      <h3 className="text-xl font-display font-bold text-white mb-3 transition-colors duration-300">
                         {phase.title}
                       </h3>
                       <p className="text-white/80 text-sm leading-relaxed">
@@ -176,8 +176,8 @@ export function FounderPage() {
                     </div>
 
                     {/* Step number */}
-                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center">
-                      <span className="text-orange font-display font-bold text-sm">
+                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-orange/10 group-hover:border-orange transition-colors duration-300">
+                      <span className="text-white group-hover:text-orange font-display font-bold text-sm transition-colors duration-300">
                         {index + 1}
                       </span>
                     </div>
@@ -196,7 +196,7 @@ export function FounderPage() {
             className="bg-gradient-to-br from-card to-bg-3 border border-white/10 rounded-2xl p-10 md:p-12"
           >
             <div className="flex items-center gap-3 mb-8">
-              <Zap className="w-6 h-6 text-orange" />
+              <Zap className="w-6 h-6 text-white" />
               <h2 className="text-2xl md:text-3xl font-display font-extrabold text-white">
                 Research Interests
               </h2>
@@ -211,9 +211,9 @@ export function FounderPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ scale: 1.05, x: 4 }}
-                  className="flex items-center gap-3 bg-orange/5 border border-orange/20 rounded-lg px-4 py-3 hover:bg-orange/10 hover:border-orange/30 transition-all duration-300 cursor-default"
+                  className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 hover:bg-white/10 hover:border-orange transition-all duration-300 cursor-default"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-orange transition-colors duration-300" />
                   <span className="text-gray-300 text-sm font-mono">
                     {interest}
                   </span>
@@ -232,7 +232,7 @@ export function FounderPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-card border border-orange/20 rounded-2xl p-10 md:p-12"
+            className="bg-card border border-white/20 rounded-2xl p-10 md:p-12"
           >
             <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
               The Vision
@@ -242,7 +242,7 @@ export function FounderPage() {
             </p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 text-white hover:text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
             >
               Explore S1Pher's mission
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
