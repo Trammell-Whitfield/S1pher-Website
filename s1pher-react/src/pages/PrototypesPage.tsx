@@ -12,13 +12,13 @@ export function PrototypesPage() {
         <div className="max-w-7xl mx-auto px-8 md:px-12 py-5 flex items-center justify-between">
           <Link
             to="/"
-            className="font-display font-extrabold text-xl text-orange tracking-tight hover:scale-105 transition-transform duration-300"
+            className="font-display font-extrabold text-xl text-white tracking-tight hover:text-orange transition-colors duration-300"
           >
             S1Pher //
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 text-white/80 text-sm font-medium hover:text-orange transition-colors duration-300"
+            className="flex items-center gap-2 text-gray-300 text-sm font-medium hover:text-white transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -29,8 +29,8 @@ export function PrototypesPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background effects */}
-        <div className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full bg-gradient-radial from-orange/10 to-transparent animate-float" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,53,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,53,0.025)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] rounded-full bg-gradient-radial from-white/5 to-transparent animate-float" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,7 +42,7 @@ export function PrototypesPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-orange text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
+            className="text-gray-400 text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
           >
             S1Pher · Research Prototypes
           </motion.p>
@@ -54,7 +54,7 @@ export function PrototypesPage() {
             className="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-tight tracking-tight mb-6"
           >
             Passion Projects &<br />
-            <span className="text-orange">Early Explorations</span>
+            Early Explorations
           </motion.h1>
 
           <motion.p
@@ -63,7 +63,7 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
-            The teaching calculator was the spark that ignited this journey — a proof of concept that offline AI could democratize access to education. While our focus has evolved to advanced communication networks, this project remains a testament to where it all began.
+            The teaching calculator was the spark that ignited this journey — a proof of concept that offline AI could democratize access to information. While our focus has evolved to advanced communication networks, this project remains a testament to where it all began.
           </motion.p>
         </motion.div>
       </section>
@@ -81,7 +81,7 @@ export function PrototypesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-card border border-orange/20 rounded-2xl p-10 md:p-12"
+              className="bg-card border border-white/20 rounded-2xl p-10 md:p-12"
             >
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
                 From EdTech to Infrastructure
@@ -91,7 +91,7 @@ export function PrototypesPage() {
               </p>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 text-white hover:text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
               >
                 Explore our current mission
                 <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
