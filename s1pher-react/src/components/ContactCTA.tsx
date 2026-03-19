@@ -63,7 +63,7 @@ export function ContactCTA() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-7xl font-display font-extrabold text-white leading-tight tracking-tight mb-6"
             >
-              Interested in collaborating?
+              Want to talk?
             </motion.h2>
 
             <motion.p
@@ -73,7 +73,7 @@ export function ContactCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto"
             >
-              Whether you're an educator, researcher, or developer — if you share the vision of democratizing access to intelligent tools, let's talk.
+              If you're working on similar problems, have feedback on my experiments, or just want to chat about photonics and edge computing — I'd love to hear from you.
             </motion.p>
 
             {/* Contact links grid */}
@@ -144,7 +144,7 @@ export function ContactCTA() {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="mt-12 text-sm text-white/60 font-mono"
             >
-              Currently seeking partnerships in education technology & hardware research
+              Open to collaborating on hardware research, discussing ideas, or answering questions about my prototypes
             </motion.p>
           </div>
         </motion.div>
