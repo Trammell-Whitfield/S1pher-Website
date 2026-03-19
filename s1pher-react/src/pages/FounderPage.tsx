@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 const journey = [
   {
     icon: TrendingUp,
-    title: 'Finance & Quantitative Analysis',
-    description: 'Started in quantitative trading and analysis, developing expertise in data-driven decision making and complex systems.',
+    title: 'Finance & Quant Trading',
+    description: 'Got interested in quantitative analysis and data-driven systems. Learned to think about complex problems mathematically.',
     color: 'from-blue-500/20 to-purple-500/20',
   },
   {
     icon: Cpu,
-    title: 'Embedded Systems Research',
-    description: 'Transitioned to electrical engineering, joining research teams focused on edge AI hardware and embedded systems development.',
+    title: 'Hardware & Embedded Systems',
+    description: 'Shifted focus to electrical engineering. Started working with research teams on edge AI hardware and embedded systems.',
     color: 'from-purple-500/20 to-pink-500/20',
   },
   {
     icon: Lightbulb,
-    title: 'Photonic Research Vision',
-    description: 'Now pursuing electrical and computer engineering with emphasis in photonics, exploring the future of light-based computing and communication.',
+    title: 'Photonics & Communication',
+    description: 'Now exploring photonics and mesh networks — trying to understand if light-based communication could change distributed computing.',
     color: 'from-pink-500/20 to-orange/20',
   },
 ];
@@ -73,7 +73,7 @@ export function FounderPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-gray-400 text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
           >
-            The Founder
+            About
           </motion.p>
 
           <motion.h1
@@ -102,7 +102,7 @@ export function FounderPage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
-            From finance to photonics — building the infrastructure for intelligent, low-power distributed systems
+            17-year-old high school student exploring photonics, mesh networks, and edge computing — trying to figure out how light could replace copper in computing systems
           </motion.p>
         </motion.div>
       </section>
@@ -119,13 +119,16 @@ export function FounderPage() {
           >
             <div className="text-lg md:text-xl text-white/90 leading-relaxed space-y-6">
               <p>
-                After working in the finance space in places like <span className="text-white font-semibold">quantitative trading and analysis</span>, Trammell Whitfield moved on to pursue electrical engineering, spending time at different research teams developing <span className="text-white font-semibold">embedded systems in edge AI tech/hardware</span>.
+                I started in finance — spent some time learning <span className="text-white font-semibold">quantitative trading and analysis</span>. But I kept getting pulled toward hardware. So I shifted to electrical engineering and started working with research teams on <span className="text-white font-semibold">embedded systems and edge AI hardware</span>.
               </p>
               <p>
-                He is now looking forward to going to college for <span className="text-white font-semibold">electrical and computer engineering</span> with an emphasis in <span className="text-white font-semibold">photonic research</span>.
+                I'm a senior in high school right now, heading to college next year to study <span className="text-white font-semibold">electrical and computer engineering</span> with a focus on <span className="text-white font-semibold">photonics</span>. The goal is a Master's in photonics research, then hopefully into R&D.
               </p>
               <p className="text-white/80">
-                He is interested in making low-power communication systems and bringing intelligence to small devices.
+                What I'm trying to figure out: how do we make low-power communication systems that bring real intelligence to small devices? Can photonics get us there faster than traditional electronics?
+              </p>
+              <p className="text-white/70 text-base">
+                Outside of this: Eagle Scout, jazz piano, and way too much time thinking about distributed systems.
               </p>
             </div>
           </motion.div>
@@ -235,16 +238,16 @@ export function FounderPage() {
             className="bg-card border border-white/20 rounded-2xl p-10 md:p-12"
           >
             <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-              The Vision
+              What I Believe
             </h3>
             <p className="text-white/80 text-lg leading-relaxed mb-6">
-              "The most powerful technologies are the ones that fade into the background. Intelligence shouldn't require cloud connectivity or massive power budgets — it should be embedded, efficient, and accessible everywhere."
+              The most powerful technologies are the ones that fade into the background. Intelligence shouldn't require cloud connectivity or massive power budgets — it should be embedded, efficient, and accessible everywhere. That's the world I'm trying to build toward.
             </p>
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-white hover:text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
             >
-              Explore S1Pher's mission
+              See what I'm working on
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
           </motion.div>
