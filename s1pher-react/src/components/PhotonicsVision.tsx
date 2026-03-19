@@ -19,7 +19,7 @@ export function PhotonicsVision() {
             Photonic<br />Communication
           </h2>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Next-generation computing at the speed of light. Building toward chip-to-chip photonic interconnects that will redefine the boundaries of edge AI.
+            What if computing could happen at the speed of light? I'm exploring chip-to-chip photonic interconnects and trying to understand if they could change what's possible with edge AI.
           </p>
         </motion.div>
 
@@ -104,10 +104,10 @@ export function PhotonicsVision() {
           className="mt-12 text-center"
         >
           <p className="text-white/80 font-mono text-sm">
-            Currently pursuing undergraduate studies in Computer & Electrical Engineering
+            High school → College for Computer & Electrical Engineering (Fall 2026)
           </p>
           <p className="text-gray-400 font-mono text-sm mt-2">
-            Target: Master's in Photonics → Research & Development
+            Long-term goal: Master's in Photonics → R&D
           </p>
         </motion.div>
       </div>
