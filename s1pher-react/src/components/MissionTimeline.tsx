@@ -42,10 +42,10 @@ export function MissionTimeline() {
           transition={{ duration: 0.8 }}
         >
           <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
-            The Mission
+            The Question
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-8">
-            Redefining how<br />data moves.
+            Can we rethink how<br />data moves?
           </h2>
         </motion.div>
 
@@ -59,10 +59,10 @@ export function MissionTimeline() {
             transition={{ duration: 0.8 }}
           >
             <p className="text-white text-lg md:text-xl leading-relaxed mb-5">
-              S1Pher is pioneering advanced communication networks that will power the next generation of distributed computing.
+              S1Pher is where I'm exploring how communication networks could work better for distributed computing.
             </p>
             <p className="text-white/60 leading-relaxed">
-              From mesh computing architectures that enable resilient edge networks to photonic interconnects that transmit data at the speed of light — we're building the infrastructure layer for tomorrow's intelligent systems.
+              From mesh computing architectures that could enable more resilient edge networks to photonic interconnects that might transmit data at the speed of light — I'm trying to understand the infrastructure layer that tomorrow's intelligent systems might need.
             </p>
           </motion.div>
 
