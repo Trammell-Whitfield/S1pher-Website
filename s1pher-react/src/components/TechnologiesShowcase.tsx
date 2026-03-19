@@ -25,9 +25,9 @@ const technologies = [
   },
   {
     icon: Layers,
-    title: 'Integrated Systems',
-    description: 'Seamless hardware-software co-design',
-    features: ['Custom silicon', 'Embedded AI', 'Real-time processing'],
+    title: 'Hardware-Software Exploration',
+    description: 'Testing how hardware and software can work closer together',
+    features: ['Embedded systems', 'On-device AI', 'Low-latency processing'],
     color: 'from-pink-500/20 to-orange/20',
   },
 ];
@@ -50,10 +50,10 @@ export function TechnologiesShowcase() {
             Core Technologies
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-6">
-            Building the<br />Infrastructure Layer
+            What I'm<br />Exploring
           </h2>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Researching and developing the foundational technologies for next-generation distributed computing
+            Testing foundational technologies that could enable better distributed computing
           </p>
         </motion.div>
 
