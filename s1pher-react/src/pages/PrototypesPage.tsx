@@ -44,7 +44,7 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-gray-400 text-sm md:text-base font-mono uppercase tracking-[0.18em] mb-6"
           >
-            S1Pher · Research Prototypes
+            Experiments
           </motion.p>
 
           <motion.h1
@@ -53,8 +53,8 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-tight tracking-tight mb-6"
           >
-            Passion Projects &<br />
-            Early Explorations
+            Where It<br />
+            Started
           </motion.h1>
 
           <motion.p
@@ -63,7 +63,7 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
-            The teaching calculator was the spark that ignited this journey — a proof of concept that offline AI could democratize access to information. While our focus has evolved to advanced communication networks, this project remains a testament to where it all began.
+            The teaching calculator was the first real experiment — trying to see if offline AI could actually work on cheap hardware. While my focus has shifted to photonics and mesh networks, this is where I learned that the interesting problems are in how devices communicate, not just what they compute.
           </motion.p>
         </motion.div>
       </section>
@@ -87,13 +87,13 @@ export function PrototypesPage() {
                 From EdTech to Infrastructure
               </h3>
               <p className="text-white/80 leading-relaxed mb-6">
-                Building the Teaching Calculator revealed fundamental limitations in current computing architectures. The need for low-latency, high-bandwidth communication at the edge led us to explore photonic interconnects and mesh computing — technologies that could reshape not just education, but the entire landscape of distributed computing.
+                Building the Teaching Calculator revealed fundamental limitations in current computing architectures. The need for low-latency, high-bandwidth communication at the edge led me to explore photonic interconnects and mesh computing — technologies that could reshape not just education, but the entire landscape of distributed computing.
               </p>
               <Link
                 to="/"
                 className="inline-flex items-center gap-2 text-white hover:text-orange font-mono text-sm hover:underline underline-offset-4 transition-all duration-300 group"
               >
-                Explore our current mission
+                See what I'm working on now
                 <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
             </motion.div>
