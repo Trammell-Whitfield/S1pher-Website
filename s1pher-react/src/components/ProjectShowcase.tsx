@@ -35,7 +35,7 @@ export function ProjectShowcase() {
             {/* Main content */}
             <div className="md:col-span-2">
               <div className="text-xs font-mono uppercase tracking-[0.2em] text-gray-400 mb-3">
-                S1Pher · Prototype 01
+                Prototype 01 · March 2024
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight mb-4">
@@ -43,7 +43,7 @@ export function ProjectShowcase() {
               </h2>
 
               <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mb-8">
-                An offline AI math tutor built into the calculator students already own — the first physical instantiation of S1Pher's mission.
+                I wanted to know if a $50 device could replace a $200/month tutoring session. The question led me to try running a quantized LLM on a Raspberry Pi 5, wirelessly bridged to a TI-84 calculator through an ESP32.
               </p>
 
               {/* Metrics Grid */}
