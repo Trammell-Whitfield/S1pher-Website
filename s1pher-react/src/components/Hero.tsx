@@ -58,7 +58,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-lg md:text-xl lg:text-2xl text-gray-200 font-light max-w-2xl leading-relaxed mb-6"
         >
-          Building the next generation of communication infrastructure through <span className="text-white font-medium">photonics</span> and <span className="text-white font-medium">mesh computing</span>.
+          Where I explore the idea that <span className="text-white font-medium">light is a better medium for computing than electrons</span> — testing how photonics and mesh networks could reshape distributed systems.
         </motion.p>
 
         <motion.div
@@ -85,7 +85,7 @@ export function Hero() {
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-orange/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
             <Lightbulb className="w-5 h-5" />
-            Our Vision
+            The Research
           </a>
 
           <Link
