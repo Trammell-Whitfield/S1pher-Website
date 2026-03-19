@@ -78,10 +78,10 @@ export function ImpactStats() {
           className="text-center mb-16"
         >
           <p className="text-gray-400 text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-4">
-            Impact & Performance
+            The Numbers
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight">
-            Building for Those<br />Left Behind
+            Why This<br />Matters to Me
           </h2>
         </motion.div>
 
