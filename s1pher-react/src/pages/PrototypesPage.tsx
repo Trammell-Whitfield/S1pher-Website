@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ProjectShowcase } from '../components/ProjectShowcase';
+import { PhotonicCommunication } from '../components/PhotonicCommunication';
 import { HowItWorks } from '../components/HowItWorks';
 
 export function PrototypesPage() {
@@ -53,8 +54,8 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-tight tracking-tight mb-6"
           >
-            Where It<br />
-            Started
+            Lab<br />
+            Experiments
           </motion.h1>
 
           <motion.p
@@ -63,7 +64,7 @@ export function PrototypesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed"
           >
-            The teaching calculator was the first real experiment — trying to see if offline AI could actually work on cheap hardware. While my focus has shifted to photonics and mesh networks, this is where I learned that the interesting problems are in how devices communicate, not just what they compute.
+            From the teaching calculator that explored offline AI on cheap hardware, to the ongoing communication protocol experiment investigating how coherent light can replace electrons in distributed computing — these are the working prototypes that test whether the ideas behind S1pher actually hold up in practice.
           </motion.p>
         </motion.div>
       </section>
@@ -71,6 +72,7 @@ export function PrototypesPage() {
       {/* Main Content */}
       <main>
         <ProjectShowcase />
+        <PhotonicCommunication />
         <HowItWorks />
 
         {/* Journey Note */}
